@@ -25,6 +25,7 @@ env:
   WINIT_X11_SCALE_FACTOR: "1.0"
 
 window:
+  energy: Performance
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -74,6 +75,8 @@ window:
   #   - SimpleFullscreen
   startup_mode: Windowed
 
+  opacity: 0.9
+
   # Window title
   #title: Alacritty
 
@@ -105,8 +108,8 @@ scrolling:
 # Font configuration (changes require restart)
 font:
   normal:
-    family: Hack
-    style: Italic
+    family: CaskaydiaCove Nerd Font
+    style: Regular
   # Normal (roman) font face
   #normal:
     # Font family
@@ -168,22 +171,6 @@ font:
   glyph_offset:
     x: 0
     y: 0
-
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina screens
-  # it is recommended to set `use_thin_strokes` to `false`
-  #
-  # macOS >= 10.14.x:
-  #
-  # If the font quality on non-retina display looks bad then set
-  # `use_thin_strokes` to `true` and enable font smoothing by running the
-  # following command:
-  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
-  #
-  # This is a global setting and will require a log out or restart to take
-  # effect.
-  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -574,12 +561,6 @@ bell:
   duration: 0
   color: '0xffffff'
 
-# Background opacity
-#
-# Window opacity as a floating point number from `0.0` to `1.0`.
-# The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
-
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>="
 
@@ -602,7 +583,7 @@ cursor:
   #   - Off: Disable blinking by default
   #   - On: Enable blinking by default
   #   - Always: Force the cursor to always blink
-  blinking: Off
+  blinking: Always
 
   # Vi mode cursor style
   #
@@ -613,7 +594,7 @@ cursor:
   #vi_mode_style: Beam
 
   # Cursor blinking interval in milliseconds.
-  #blink_interval: 750
+  blink_interval: 750
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
@@ -935,6 +916,7 @@ key_bindings:
   - { key: PageDown,  mods: Shift,   mode: ~Alt,        action: ScrollPageDown }
   - { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   - { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
+  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 
    # Vi Mode
   - { key: Space,  mods: Shift, mode: Vi|~Search, action: ScrollToBottom          }
